@@ -1,6 +1,6 @@
 #include "utils.h"
 
-char *readUntil(bool (*condition)(char*), char *ipt) {
+char *readUntil(bool (*condition)(char), char *ipt, char **rest) {
     size_t buffer_size = 8;
 
     char *buffer = (char *)malloc(sizeof(char) * buffer_size);
@@ -14,8 +14,13 @@ char *readUntil(bool (*condition)(char*), char *ipt) {
 
     size_t buffer_length = 0;
 
-    while (*ipt && !condition(ipt)) {
-        if (buffer_length >= buffer_size - 1) {
+    while (*ipt && !condition(*ipt)) {
+        if (*ipt == ' ') {
+            ipt++;
+            continue;
+        }
+
+        if (buffer_length > buffer_size) {
             buffer_size *= 2;
             buffer = (char *)realloc(buffer, buffer_size * sizeof(char));
             
@@ -25,11 +30,14 @@ char *readUntil(bool (*condition)(char*), char *ipt) {
             }
         }
 
-        strncat(buffer, ipt, 1);
-        ipt++;
+        buffer[buffer_length++] = *ipt++;
     }
 
-    buffer[strlen(buffer)] = '\0';
+    buffer[buffer_length] = '\0';
 
+    printf("2\n");
+    *rest = ipt;
+
+    printf("4\n");
     return buffer;
 }

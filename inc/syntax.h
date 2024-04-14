@@ -1,18 +1,24 @@
 #ifndef SYNTAX_H
 #define SYNTAX_H
 
-#include "expr.h"
-#include "token.h"
+#include <stdio.h>
+
+#include "symbol.h"
+#include "stringMapper.h"
+#include "utils.h"
 
 typedef struct {
-    char *nonTerminal;
-    char *production;
+    symbol nonTerminal;
+    int num_symbol;
+    symbol *production;
 } ProductionRule;
 
 ProductionRule *productions;
 
 void processSyntaxTxt(char *file_path);
 
-void registerSyntax(char *);
+void showProductionRules();
+
+symbol *processRightBuffer(char *buffer);
 
 #endif

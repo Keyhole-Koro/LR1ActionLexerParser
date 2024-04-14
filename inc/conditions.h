@@ -1,12 +1,14 @@
 #ifndef CONDITIONS_H
 #define CONDITIONS_H
 
-inline bool isColon(char ipt) {
-    return ipt == ':';
-}
+#include <stdbool.h>
 
-inline bool isPipe(char ipt) {
-    return ipt == '|';
-}
+bool isColon(char ipt);
+bool isEnd(char ipt);
+bool isPipe(char ipt);
+bool isSingleQuote(char ipt);
+bool isSpace(char ipt);
+bool isOtherThanSpace(char ipt);
+
 
 #endif
