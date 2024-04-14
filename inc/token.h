@@ -2,21 +2,33 @@
 #define TOKEN_H
 
 typedef enum {
-    NUMBER,
+    SYMBOL,
 
     ADD,      // +
-    SUB,      // -
+    SUB,   1   // -
     MUL,      // *
     DIV,      // /
 
     L_PARENTHESES, // (
     R_PARENTHESES, // )
 
-} TokenKind;
+} TokenType;
 
 typedef struct {
-  TokenKind tk;
+  TokenType type;
   char *val;
 } Token;
+
+typedef int symbol;
+
+struct KeyValue {
+  char *str;
+  symbol sym;
+};
+
+extern struct KeyValue single_char[];
+
+TokenType correspondingToken(char *substring, size_t substring_length, struct KeyValue *symbols);
+
 
 #endif
