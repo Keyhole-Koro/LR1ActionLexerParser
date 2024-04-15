@@ -9,6 +9,6 @@ bool isPipe(char ipt);
 bool isSingleQuote(char ipt);
 bool isSpace(char ipt);
 bool isOtherThanSpace(char ipt);
-
+bool isAlphabet(char letter);
 
 #endif

@@ -3,22 +3,24 @@
 
 #include <stdio.h>
 
+#include "tokenize.h"
 #include "symbol.h"
 #include "stringMapper.h"
 #include "utils.h"
 
-typedef struct {
+typedef struct ProductionRule {
     symbol nonTerminal;
     int num_symbol;
     symbol *production;
+    struct ProductionRule *next;
 } ProductionRule;
 
-ProductionRule *productions;
+extern ProductionRule *productions;
 
 void processSyntaxTxt(char *file_path);
 
 void showProductionRules();
 
-symbol *processRightBuffer(char *buffer);
+int processRightBuffer(char *buffer, symbol **right);
 
 #endif

@@ -23,3 +23,7 @@ inline bool isSpace(char ipt) {
 inline bool isOtherThanSpace(char ipt) {
     return ipt != ' ';
 }
+
+inline bool isAlphabet(char letter) {
+    return ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'));
+}

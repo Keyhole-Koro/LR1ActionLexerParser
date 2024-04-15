@@ -35,9 +35,7 @@ char *readUntil(bool (*condition)(char), char *ipt, char **rest) {
 
     buffer[buffer_length] = '\0';
 
-    printf("2\n");
     *rest = ipt;
 
-    printf("4\n");
     return buffer;
 }
